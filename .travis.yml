@@ -16,9 +16,7 @@ sudo: false
 branches:
   only:
   - master
-notifications:
-  email:
-  - cukes-devs@googlegroups.com
+  - check-unique-junit-descriptions
 env:
   global:
   - secure: |-

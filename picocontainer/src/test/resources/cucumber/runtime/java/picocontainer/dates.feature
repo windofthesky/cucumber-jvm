@@ -24,3 +24,4 @@ Feature: Dates
     | input date               | timezone | year | month | day | hours | minutes | seconds |
     | 2008-12-31T23:59:59, PST | PST      | 2008 | 12    | 31  | 23    | 59      | 59      |
     | 2008-12-31T23:59:59, PST | UTC      | 2009 | 1     | 1   | 7     | 59      | 59      |
+    | 2008-12-31T23:59:59, PST | UTC      | 2009 | 1     | 1   | 7     | 59      | 59      |
