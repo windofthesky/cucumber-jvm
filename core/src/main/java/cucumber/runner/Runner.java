@@ -25,7 +25,6 @@ import gherkin.pickles.PickleString;
 import gherkin.pickles.PickleTable;
 import gherkin.pickles.PickleTag;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -94,22 +93,13 @@ public class Runner implements UnreportedStepExecutor {
     }
 
     private TestCase createTestCaseForPickle(Pickle pickle) {
-        List<PickleTag> tags;
-        try { // TODO: Fix when Gherkin provide a getter for the tags.
-            Field f;
-            f = pickle.getClass().getDeclaredField("tags");
-            f.setAccessible(true);
-            tags = (List<PickleTag>) f.get(pickle);
-        } catch (Exception e) {
-            tags = Collections.<PickleTag>emptyList();
-        }
         List<TestStep> testSteps = new ArrayList<TestStep>();
         if (!runtimeOptions.isDryRun()) {
-            addTestStepsForBeforeHooks(testSteps, tags);
+            addTestStepsForBeforeHooks(testSteps, pickle.getTags());
         }
         addTestStepsForPickleSteps(testSteps, pickle);
         if (!runtimeOptions.isDryRun()) {
-            addTestStepsForAfterHooks(testSteps, tags);
+            addTestStepsForAfterHooks(testSteps, pickle.getTags());
         }
         TestCase testCase = new TestCase(testSteps, pickle);
         return testCase;
