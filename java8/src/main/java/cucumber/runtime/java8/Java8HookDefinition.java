@@ -1,16 +1,16 @@
-package cucumber.runtime.java;
+package cucumber.runtime.java8;
+
+import static java.util.Arrays.asList;
 
 import cucumber.api.Scenario;
 import cucumber.api.java8.HookBody;
 import cucumber.api.java8.HookNoArgsBody;
 import cucumber.runtime.HookDefinition;
-import cucumber.runtime.Timeout;
 import cucumber.runtime.TagPredicate;
+import cucumber.runtime.Timeout;
 import gherkin.pickles.PickleTag;
 
 import java.util.Collection;
-
-import static java.util.Arrays.asList;
 
 public class Java8HookDefinition implements HookDefinition {
     private final TagPredicate tagPredicate;
